@@ -1,0 +1,30 @@
+{% load static %}<!--Necesario para que pueda acceder al css-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" type="text/css" href="{%static '/styles/base.css'%}"><!--Cargar css desde django-->
+    
+    
+    <!--<script src='main.js'></script>-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/arreglos">Arreglos</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+            <!--<li><a href="{% url 'index' %}">Pedidos</a></li> Usar el name de la url -->
+        </ul>
+    </nav>
+    {% block content%}
+    {% endblock %}
+    <!---->
+    <footer>
+        <p>&copy;Todos los derechos reservados 2024</p>
+    </footer>
+</body>
+</html>

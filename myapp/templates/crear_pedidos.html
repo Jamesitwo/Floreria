@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content%}
+{% load static%}
+    <link rel="stylesheet" type="text/css" href="{%static '/styles/forms.css'%}"> <!--Cargar css desde django-->
+<div class="formulario-container">
+    <form method="POST">
+        {% csrf_token %}
+        {{ formulario.as_p }}  <!-- Muestra el formulario en formato de párrafo -->
+        
+        <label for="fechaenvio">Fecha y Hora:</label>
+        <input type="datetime-local" id="fechaenvio" name="fechaenvio" required>
+
+        <label for="mi-lista">Selecciona una opción:</label>
+        <select name="metodoP" id="metodoP">
+            <option value="valor1">PSE</option>
+            <option value="valor2">Paypal</option>
+        </select>
+        
+        <button type="submit">Guardar Producto</button>
+    </form>
+</div>
+{% endblock %}

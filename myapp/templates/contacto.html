@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content%}
+{% load static%}
+    <link rel="stylesheet" type="text/css" href="{%static '/styles/contacto.css'%}"> <!--Cargar css desde django-->
+<section class="contacto">
+    <div class="container">
+        <h2>Contáctanos</h2>
+        <p>¡Nos encantaría saber de ti! Si tienes alguna pregunta, necesitas ayuda con un pedido o quieres hacer una consulta especial, no dudes en contactarnos.</p>
+        <div class="contacto-info">
+            <div class="info-item">
+                <h3>Ubicación</h3>
+                <p>Calle de las Flores 123, <br> Ciudad Floral, País de las Maravillas</p>
+            </div>
+            <div class="info-item">
+                <h3>Teléfono</h3>
+                <p>+57 311 123 4567</p>
+            </div>
+            <div class="info-item">
+                <h3>Correo electrónico</h3>
+                <p>info@floreriapetalos.com</p>
+            </div>
+        </div>
+        <div class="redes-sociales">
+            <h3>Síguenos en redes sociales</h3>
+            <a href="#" target="_blank"><img src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-0.png" alt="Facebook"></a>
+            <a href="#" target="_blank"><img src="https://logodownload.org/wp-content/uploads/2017/04/instagram-logo.png" alt="Instagram"></a>   
+
+        </div>
+        <div class="whatsapp">
+            <a href="https://wa.me/573013582313" target="_blank">
+                <img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1.png" alt="WhatsApp">
+                <span>Contáctanos por WhatsApp</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

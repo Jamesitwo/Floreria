@@ -1,0 +1,55 @@
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos de la sección de contacto */
+.contacto {
+    background-color: #f8f8f8;
+    padding: 40px 0;
+}
+
+.contacto h2 {
+    color: #e91e63; /* Color rosa del título */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contacto-info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    text-align: center;
+}
+
+.redes-sociales {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.redes-sociales img {
+    width: 30px;
+    margin: 0 10px;
+}
+
+.whatsapp {
+    text-align: center;
+}
+
+.whatsapp a {
+    display: inline-flex;
+    align-items: center;
+    background-color: #25d366; /* Color verde de WhatsApp */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.whatsapp img {
+    width: 20px;
+    margin-right: 10px;}

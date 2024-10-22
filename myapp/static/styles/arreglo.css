@@ -1,0 +1,67 @@
+/* Clase contenedora para los estilos de esta página */
+.floreria {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Contenedor para la imagen y el texto (usar flexbox para alineación) */
+.floreria .arreglo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Imagen del arreglo floral */
+.floreria img {
+    max-width: 300px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 30px; /* Espacio entre la imagen y el texto */
+}
+
+/* Texto (nombre, descripción, precio) */
+.floreria .arreglo-info {
+    max-width: 500px;
+}
+
+/* Encabezado (nombre del arreglo) */
+.floreria h1 {
+    font-size: 36px;
+    color: #ff6f91;
+    font-family: 'Brush Script MT', cursive;
+    margin-bottom: 10px;
+}
+
+/* Descripción y precio */
+.floreria p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Botón de compra */
+.floreria button {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff6f91;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.floreria button:hover {
+    background-color: #ff8fa3;
+}
+
+/* Enlace de compra */
+.floreria a {
+    text-decoration: none;
+}

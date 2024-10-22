@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+     <!--Diferenciado que punto corresponde a este html-->
+    {% block content%}
+
+    {% load static%}
+    <link rel="stylesheet" type="text/css" href="{%static '/styles/index.css'%}"><!--Cargar css desde django-->
+    <div class="banner">
+    <img src="{% static 'img/banner.png' %}" alt="" width="70%" height="10%" >
+    </div>
+    <h1>🌹Regala a tu persona especial🌹</h1>
+    
+
+<div class="arreglos-container">
+    {% for x in Arreglos  %}
+    <a href="arreglo/{{x.id}}" class="arreglo-link">
+        <div class="arreglo-item">
+            <h3>{{x.nombre}}</h3>
+            <img src="{{x.ImgUrl}}" alt="">
+            <p>Precio: {{x.precio}}</p>
+        </div>
+    </a> 
+    {% endfor %}
+</div>   
+    
+    {% endblock %}
