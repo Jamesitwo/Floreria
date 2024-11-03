@@ -5,10 +5,44 @@
 <div class="formulario-container">
     <form method="POST">
         {% csrf_token %}
-        {{ formulario.as_p }}  <!-- Muestra el formulario en formato de párrafo -->
-        
+       <!-- {{ formulario.as_p }}-->  <!-- Muestra el formulario en formato de párrafo -->
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" required maxlength="10">
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="cedula">Cedula</label>
+        <input type="number" name="cedula" id="cedula" maxlength="15" required>
+
+        <label for="celular">Numero celular</label>
+        <input type="number" name="celular" id="celular" min="3000000000" max="3999999999" required>
+
+        <label for="nombreR">Nombre de quien recibe</label>
+        <input type="text" name="nombreR" id="nombreR" required >
+
+        <label for="direccion">Direccion</label>
+        <input type="text" name="direccion" id="direccion" required>
+
+        <label for="municipio">Municipio</label>
+        <input type="text" name="municipio" id="municipio" required>
+
+        <label for="barrio">Barrio</label>
+        <input type="text" name="barrio" id="barrio" required>
+
+        <label for="celularR">Celular de quien recibe</label>
+        <input type="number" name="celularR" id="celularR" maxlength="10" required>
+
+        <label for="quienEnvia">Quien envia</label>
+        <input type="text" name="quienEnvia" id="quienEnvia">
+
+        <label for="mensaje">Mensaje</label>
+        <textarea name="mensaje" id="mensaje"></textarea>
+
         <label for="fechaenvio">Fecha y Hora:</label>
         <input type="datetime-local" id="fechaenvio" name="fechaenvio" required>
+
+        
 
         <label for="mi-lista">Selecciona una opción:</label>
         <select name="metodoP" id="metodoP">

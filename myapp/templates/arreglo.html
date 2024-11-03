@@ -4,16 +4,30 @@
 {% load static%}
     <link rel="stylesheet" type="text/css" href="{%static '/styles/arreglo.css'%}"> <!--Cargar css desde django-->
     <link rel="stylesheet" type="text/css" href="{%static '/styles/index.css'%}"><!--Cargar css desde django-->
+    <script src="{%static '/js/arreglo_detail.js'%}" defer></script>
     <div class="floreria">
         <div class="arreglo-container">
             <img src="{{ arreglo.ImgUrl }}" alt="{{ arreglo.nombre }}">
             
             <div class="arreglo-info">
-                <h1>{{ arreglo.nombre }}</h1>
+                <p id="id_arreglo" style="display:none;">{{arreglo.id}}</p>
+                <h1 id="nombre_arreglo">{{ arreglo.nombre }}</h1>
                 <p>{{ arreglo.descripcion }}</p>
-                <p>Precio: {{ arreglo.precio }}</p>
+                <p id="precio_arreglo">Precio: {{ arreglo.precio }}</p>
+                <p id="stock_arreglo">{{arreglo.stock}}</p>
                 <a href="/crear_pedidos/{{arreglo.id}}"><button>Comprar Ahora</button></a>
+                
+                <form method="POST">
+                    {% csrf_token %}
+                   <!-- <input type="hidden" name="id" id="id" value="{{arreglo.id}}">-->
+                    <button id="Btn_agregar_carrito">Agregar al carrito</button>
+                </form>
             </div>
+            
+                
+
+
+            
         </div>
     </div>
     <div class="arreglos-container">

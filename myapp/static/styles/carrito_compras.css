@@ -1,0 +1,64 @@
+.contenedor-principal {
+    display: flex;  /* Usamos flexbox para crear las dos columnas */
+  }
+
+  /* Estilos para la lista de productos */
+  .lista-productos {
+    width: 70%;     /* Ajusta el ancho de la columna de productos */
+  }
+
+  /* Estilos para cada producto individual */
+  .producto {
+    display: flex;
+    align-items: center; /* Alinea verticalmente la imagen y los detalles */
+    margin-bottom: 20px; /* Espacio entre cada producto */
+  }
+
+  .producto img {
+    width: 100px;   /* Ajusta el tamaño de la imagen del producto */
+    margin-right: 20px; /* Espacio entre la imagen y los detalles */
+  }
+
+  .nombre-producto {
+    font-weight: bold; /* Nombre del producto en negrita */
+  }
+
+  /* Estilos para los controles de cantidad y el botón "Eliminar" */
+  .cantidad-controles {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los botones y el input */
+  }
+
+  .cantidad-controles button {
+    /* Estilos generales para los botones de cantidad */
+    background-color: #f0f0f0; 
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
+  .cantidad-controles button:hover {
+    background-color: #ddd;
+  }
+
+  .cantidad-controles #eliminar {
+    /* Estilos específicos para el botón "Eliminar" */
+    background-color: #f44336; /* Color de fondo rojo */
+    color: white;            /* Color de texto blanco */
+  }
+
+  .cantidad-controles #eliminar:hover {
+    background-color: #d32f2f; /* Color de fondo rojo más oscuro al pasar el ratón */
+  }
+
+  /* Estilos para el resumen de la compra */
+  .resumen-compra {
+    width: 30%;     /* Ajusta el ancho de la columna del resumen */
+    border: 1px solid #ccc; /* Borde simple alrededor del resumen */
+    padding: 20px;  /* Espacio interno en el resumen */
+  }
+
+  .resumen-compra h2 {
+    /* Estilos para el título del resumen (opcional) */
+  }

@@ -1,10 +1,11 @@
 from django import forms
+from django.core.validators import RegexValidator
 
 class crearPedido(forms.Form):
     nombre=forms.CharField(label="Nombre", max_length=30)
     email=forms.EmailField()
     cedula=forms.CharField(label="Cedula", max_length=15)
-    celular=forms.CharField(label="Telefono", max_length=10)
+    celular=forms.CharField(label="Telefono", max_length=10,)
     nombreR=forms.CharField(label="Nombre de quien recibe", max_length=30)
     direccion=forms.CharField(label="Direccion", max_length=30)
     muicipio=forms.CharField(label="Minicipio", max_length=20)

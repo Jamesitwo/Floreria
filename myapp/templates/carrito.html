@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static%}
+<link rel="stylesheet" type="text/css" href="{%static '/styles/carrito_compras.css'%}"><!--Cargar css desde django-->
+<div class="contenedor-principal">
+    <div class="lista-productos">
+      {% for arreglo,cantidad,total_arreglo in cantidad_y_arreglo %}
+        <div class="producto">
+          <img src="{{arreglo.ImgUrl}}" alt="">
+          <div>
+            <p class="nombre-producto">{{arreglo.nombre}}</p> 
+            <p>Precio: {{total_arreglo}}</p>
+            <div class="cantidad-controles"> 
+              <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="id" id="id"  value="{{arreglo.id}}" hidden>
+                <input type="number" value="{{cantidad}}" min="1" max="{{arreglo.stock}}" readonly>
+                <button name="opcion" id="menos" value="menos">-</button>
+                <button name="opcion" id="mas" value="mas">+</button>
+                <button name="opcion" id="eliminar" value="eliminar">Eliminar</button>  </form>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="resumen-compra">
+      <h2>Resumen de compra</h2>
+      <p>Total: {{total}}</p>
+    </div>
+  </div>
+{% endblock %}
