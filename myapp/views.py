@@ -9,7 +9,7 @@ from .carritoCompras import *
 # Create your views here.
 
 def index(request):
-    Arreglos=list(Arreglo.objects.all())
+    Arreglos=list(Arreglo.objects.filter(stock__gt=0))
     arreglos_random= random.sample(Arreglos, 5)
     return render(request,"index.html",{
         "Arreglos":arreglos_random
@@ -24,78 +24,97 @@ def contacto(request):
 def Arreglos(request):
     
     print("entro en arreglos")
-    Arreglos=list(Arreglo.objects.all())
+    Arreglos=list(Arreglo.objects.filter(stock__gt=0))
     return render(request,"arreglos.html",{
         "Arreglos":Arreglos
     })
 
-def crear_pedido(request, id):
-    print(id)
-    if request.method=="GET":
-        return render(request,"crear_pedidos.html") 
-    else:
-        metodoP=request.POST["metodoP"]
-        print(metodoP)
-        fechaenvio_str = request.POST["fechaenvio"]
+def crear_pedido(request):
+    total=calcularTotales()
+    if(len(arreglosComprar)==0):
+        return redirect("/arreglos/")
         
-       # fechaenvio = datetime.strptime(fechaenvio_str, '%Y-%m-%dT%H:%M')
-        #arreglo_instance =
-        Pedido.objects.create(
+    if(request.method=="POST"):
+        print("crear pedido")
+        
+        fechaenvio_str = request.POST["fechaenvio"]
+        pedido=Pedido(
             nombre=request.POST["nombre"],
             email=request.POST["email"],
             cedula=request.POST["cedula"],
             celular=request.POST["celular"],
             nombreR=request.POST["nombreR"],
             direccion=request.POST["direccion"],
-            muicipio=request.POST["municipio"],
+            municipio=request.POST["municipio"],
             barrio=request.POST["barrio"],
             celularR=request.POST["celularR"],
             quienEnvia=request.POST["quienEnvia"],
             fechaenvio=datetime.strptime(fechaenvio_str, '%Y-%m-%dT%H:%M'),
-            mensaje=request.POST["mensaje"])
-        if (metodoP=="valor1"):
-            return redirect("https://www.pse.com.co/persona")
-        else:
-            return redirect("https://www.paypal.com/co/home")
-            
+            mensaje=request.POST["mensaje"],
+            total_pagado=total
+        )
+        guardarBD(pedido)
+        return redirect("/")
+
+        pass
+    cantidad_y_arreglo=list(zip(arreglosComprar,arreglosCantidades,totalValorArreglo))
+    
+    return render(request,"crear_pedidos.html",{
+        "cantidad_y_arreglo":cantidad_y_arreglo,
+        "total":total,
+
+    })
 #-----------------------------------------------------------------------
 def arreglo_detalle(request,id):
 
 #Toma el id del del arreglo en especifico para enviarlo al html
     arreglo_detail=Arreglo.objects.get(id=id)
 #Vista de los arreglos de la parte inferior
-    Arreglos=list(Arreglo.objects.all())
+    Arreglos=list(Arreglo.objects.filter(stock__gt=0))
     arreglos_random= random.sample(Arreglos, 5)
-   
+    mensaje=""
 
     if request.method=="POST":
-        a=comprobar_stock(arreglo_detail,1)
-        pass
+        arreglo=Arreglo.objects.get(id=id)
+        agregar_comprar=request.POST.get("agregar_comprar")
+        if(agregar_comprar=="Btn_comprar_ahora"):
+            print("Btn_comprar_ahora")
+            a=comprobar_stock(arreglo,1)
+            return redirect("/crear_pedidos/")
+        else:
+            print("Btn_agregar_carrito")
+            a=comprobar_stock(arreglo,1)
+            if(not a):
+                mensaje="No hay stock suficiente"
 
-
-    return render(request,"arreglo.html", {
+    return render(request,"arreglo_detalle.html", {
         "arreglo":arreglo_detail,
         "Arreglos":arreglos_random,
-        
-        
+        "mensaje":mensaje,
     })
     
 
 
 def carrito(request):
     total=calcularTotales()
+    mensaje=""
     if(request.method=="POST"):
+        opcion= request.POST.get("opcion")
+        if(opcion=="proceder_pago"):
+            return redirect("/crear_pedidos/")
         id=request.POST["id"]
         arreglo=Arreglo.objects.get(id=id)
-        accion= request.POST.get("opcion")
-        if(accion=="mas"):
-            comprobar_stock(arreglo,1)
-        elif(accion=="menos"):
+       
+        if(opcion=="mas"):
+            respuesta=comprobar_stock(arreglo,1)
+            if(not respuesta):
+                mensaje="No hay suficiente stock"
+        elif(opcion=="menos"):
             comprobar_stock(arreglo,-1)
             pass
-        elif(accion=="eliminar"):
+        elif(opcion=="eliminar"):
             eleminarCarrito(arreglo)
-            
+        
         total=calcularTotales()
 
 
@@ -104,5 +123,5 @@ def carrito(request):
     return render(request, "carrito.html",{
         "cantidad_y_arreglo":cantidad_y_arreglo,
         "total":total,
-        "zip":zip
+        "mensaje":mensaje,
     })

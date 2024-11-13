@@ -65,3 +65,45 @@
 .floreria a {
     text-decoration: none;
 }
+
+
+/* Estilo para el contenedor de alerta */
+.mensaje {
+    position: fixed; /* Mantiene la alerta en una posición fija en la pantalla */
+    top: 10px;
+    right: 10px;
+    padding: 15px 20px;
+    background-color: #ff6f91; /* Color de fondo de tu paleta */
+    color: #ffffff;
+    font-size: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Clase para mostrar la alerta */
+.mensaje.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilo del texto en la alerta */
+.mensaje p {
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Opcional: cerrar la alerta (botón o mensaje) */
+.mensaje .close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-left: auto;
+    cursor: pointer;
+}

@@ -16,4 +16,3 @@ const a=mensaje.innerText.length;
 if(a!=0){
     showAlert()
 }
-

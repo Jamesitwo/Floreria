@@ -26,12 +26,13 @@ class Pedido(models.Model):
     celular=models.CharField(max_length=10)
     nombreR=models.CharField(max_length=30)
     direccion=models.CharField(max_length=30)
-    muicipio=models.CharField(max_length=20)
+    municipio=models.CharField(max_length=20)
     barrio=models.CharField(max_length=30)
     celularR=models.CharField(max_length=10)
     quienEnvia=models.CharField(max_length=30)
     fechaenvio=models.DateTimeField()
     mensaje=models.TextField()
+    total_pagado = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     def __str__(self):
         return self.nombre+" "+str(self.id)
 
@@ -49,3 +50,5 @@ class PedidoArreglo(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, related_name='pedido_arreglos')
     arreglo = models.ForeignKey(Arreglo, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField()
+    def __str__(self) -> str:
+        return super().__str__()

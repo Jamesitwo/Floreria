@@ -6,8 +6,8 @@ urlpatterns=[
     path("contacto/",views.contacto),  
     path("arreglos/",views.Arreglos),
 
-    path("crear_pedidos/<int:id>",views.crear_pedido),
+    path("crear_pedidos/",views.crear_pedido),
 
-    path("arreglo/<int:id>",views.arreglo_detalle),
+    path("arreglo_detalle/<int:id>",views.arreglo_detalle),
     path("carrito/",views.carrito)
 ]

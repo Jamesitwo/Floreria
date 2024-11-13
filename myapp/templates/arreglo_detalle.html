@@ -2,9 +2,11 @@
 
 {% block content %}
 {% load static%}
-    <link rel="stylesheet" type="text/css" href="{%static '/styles/arreglo.css'%}"> <!--Cargar css desde django-->
+    <link rel="stylesheet" type="text/css" href="{%static '/styles/arreglo_detail.css'%}"> <!--Cargar css desde django-->
     <link rel="stylesheet" type="text/css" href="{%static '/styles/index.css'%}"><!--Cargar css desde django-->
     <script src="{%static '/js/arreglo_detail.js'%}" defer></script>
+    <div class="mensaje" id="mensaje"><p>{{mensaje}}</p></div>
+
     <div class="floreria">
         <div class="arreglo-container">
             <img src="{{ arreglo.ImgUrl }}" alt="{{ arreglo.nombre }}">
@@ -15,12 +17,14 @@
                 <p>{{ arreglo.descripcion }}</p>
                 <p id="precio_arreglo">Precio: {{ arreglo.precio }}</p>
                 <p id="stock_arreglo">{{arreglo.stock}}</p>
-                <a href="/crear_pedidos/{{arreglo.id}}"><button>Comprar Ahora</button></a>
+                
                 
                 <form method="POST">
                     {% csrf_token %}
                    <!-- <input type="hidden" name="id" id="id" value="{{arreglo.id}}">-->
-                    <button id="Btn_agregar_carrito">Agregar al carrito</button>
+                    <input type="text" name="id_arreglo" id="id_arreglo" value="id_arreglo" hidden>
+                    <button name="agregar_comprar" id="Btn_comprar_ahora" value="Btn_comprar_ahora">Comprar Ahora</button>
+                    <button name="agregar_comprar" id="Btn_agregar_carrito" value="Btn_agregar_carrito">Agregar al carrito</button>
                 </form>
             </div>
             
@@ -32,7 +36,7 @@
     </div>
     <div class="arreglos-container">
         {% for x in Arreglos  %}
-        <a href="/arreglo/{{x.id}}" class="arreglo-link">
+        <a href="/arreglo_detalle/{{x.id}}" class="arreglo-link">
             <div class="arreglo-item">
                 <h3>{{x.nombre}}</h3>
                 <img src="{{x.ImgUrl}}" alt="">

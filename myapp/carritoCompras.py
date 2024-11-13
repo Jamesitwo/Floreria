@@ -1,3 +1,5 @@
+from .models import*
+
 arreglosComprar=[]
 arreglosCantidades=[]
 totalValorArreglo=[]
@@ -11,14 +13,12 @@ def comprobar_stock(arreglo,accion):
         cantidad=arreglosCantidades[index]+accion
         if(cantidad<=stock and cantidad>=1):
             arreglosCantidades[index]=cantidad
-            print("entro en try", arreglosCantidades[index])
             return True
         return False
     except:
         arreglosComprar.append(arreglo)
         arreglosCantidades.append(1)
         totalValorArreglo.append(arreglo.precio)
-        print("entro en except")
         return True
 
 
@@ -28,7 +28,6 @@ def calcularTotales():
     for i in range(len(arreglosComprar)):
        totalValorArreglo[i]=arreglosCantidades[i]*arreglosComprar[i].precio
        total=total+totalValorArreglo[i]
-       #print(arreglosComprar[i].nombre,totalValorArreglo[i])
        pass
     return total
 
@@ -38,3 +37,23 @@ def eleminarCarrito(arreglo):
     del arreglosComprar[index]
     del arreglosCantidades[index]
     del totalValorArreglo[index]
+
+    pass
+
+def guardarBD(usuario):
+    usuario.save()
+    for i in range(len(arreglosComprar)):
+        PedidoArreglo.objects.create(
+            pedido=usuario,
+            arreglo=arreglosComprar[i],
+            cantidad=arreglosCantidades[i]
+        )
+        arreglosComprar[i].stock=arreglosComprar[i].stock-arreglosCantidades[i]
+        arreglo=arreglosComprar[i]
+        print(arreglo.stock)
+        arreglo.save()
+        pass
+
+    arreglosCantidades.clear()
+    arreglosComprar.clear()
+    totalValorArreglo.clear()
