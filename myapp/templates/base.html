@@ -1,4 +1,4 @@
-{% load static %}<!--Necesario para que pueda acceder al css-->
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,24 +6,27 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" type="text/css" href="{%static '/styles/base.css'%}"><!--Cargar css desde django-->
-    
-    
-    <!--<script src='main.js'></script>-->
+    <link rel="stylesheet" type="text/css" href="{% static '/styles/base.css' %}">
 </head>
 <body>
     <nav>
         <ul>
             <li><a href="/">Inicio</a></li>
-            <li><a href="/arreglos">Arreglos</a></li>
+            <li><a href="/arreglos/todos">Arreglos</a></li>
             <li><a href="/contacto">Contacto</a></li>
             <li><a href="/carrito">Carrito</a></li>
-            <!--<li><a href="{% url 'index' %}">Pedidos</a></li> Usar el name de la url -->
+            <li class="dropdown">
+                <a href="#">Categorías</a>
+                <ul class="dropdown-content">
+                    {% for i in categorias %}
+                    <li><a href="/arreglos/{{ i.nombre }}">{{ i.nombre }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
         </ul>
     </nav>
-    {% block content%}
+    {% block content %}
     {% endblock %}
-    <!---->
     <footer>
         <p>&copy;Todos los derechos reservados 2024</p>
     </footer>

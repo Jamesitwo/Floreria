@@ -11,8 +11,6 @@ body {
     color: #333;
 }
 
-
-
 nav ul {
     list-style-type: none;
     padding: 10px;
@@ -23,6 +21,7 @@ nav ul {
 
 nav ul li {
     margin: 0 15px;
+    position: relative; /* Para el posicionamiento del menú desplegable */
 }
 
 nav ul li a {
@@ -36,10 +35,35 @@ nav ul li a:hover {
     color: #98fb98;
 }
 
-/* Bloque de contenido 
-{% block content %}
-    /* Aquí se agregan los estilos personalizados para el bloque de contenido de cada página 
-{% endblock %}
+/* Estilo para el menú desplegable */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffb6c1;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content li {
+    margin: 0;
+}
+
+.dropdown-content li a {
+    color: #333;
+    padding: 10px;
+    text-align: left;
+    display: block;
+}
+
+.dropdown-content li a:hover {
+    background-color: #98fb98;
+}
+
+/* Mostrar el submenú al pasar el cursor */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 /* Footer */
 footer {
@@ -47,10 +71,8 @@ footer {
     color: white;
     padding: 30px;
     text-align: center;
-    /*position: relative;*/
 }
 
 footer p {
     margin: 0;
 }
-

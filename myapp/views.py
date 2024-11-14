@@ -8,25 +8,45 @@ from datetime import datetime
 from .carritoCompras import *
 # Create your views here.
 
+
+# def base(request):
+    
+#     return render(request,"base.html",{
+#         "categorias":categorias
+
+#     })
+
+categorias=Categoria.objects.all()
 def index(request):
+    
+    #base(request)
     Arreglos=list(Arreglo.objects.filter(stock__gt=0))
     arreglos_random= random.sample(Arreglos, 5)
     return render(request,"index.html",{
-        "Arreglos":arreglos_random
+        "Arreglos":arreglos_random,
+        "categorias":categorias,
     })
     
 
 def contacto(request):
-    return render(request,"contacto.html")
+    return render(request,"contacto.html",{
+        "categorias":categorias,
+    })
 
 
 
-def Arreglos(request):
-    
-    print("entro en arreglos")
+def Arreglos(request,categoria):
     Arreglos=list(Arreglo.objects.filter(stock__gt=0))
+    print("entro en arreglos")
+    if not(categoria=="todos"):
+        categoria=Categoria.objects.get(nombre=categoria)
+        Arreglos=list(Arreglo.objects.filter(stock__gt=0, categorias=categoria))
+        pass
+
+    
     return render(request,"arreglos.html",{
-        "Arreglos":Arreglos
+        "Arreglos":Arreglos,
+        "categorias":categorias,
     })
 
 def crear_pedido(request):
@@ -62,6 +82,7 @@ def crear_pedido(request):
     return render(request,"crear_pedidos.html",{
         "cantidad_y_arreglo":cantidad_y_arreglo,
         "total":total,
+        "categorias":categorias,
 
     })
 #-----------------------------------------------------------------------
@@ -91,6 +112,7 @@ def arreglo_detalle(request,id):
         "arreglo":arreglo_detail,
         "Arreglos":arreglos_random,
         "mensaje":mensaje,
+        "categorias":categorias,
     })
     
 
@@ -124,4 +146,5 @@ def carrito(request):
         "cantidad_y_arreglo":cantidad_y_arreglo,
         "total":total,
         "mensaje":mensaje,
+        "categorias":categorias,
     })
