@@ -31,6 +31,13 @@ nav ul li a {
     font-weight: bold;
 }
 
+span{
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 nav ul li a:hover {
     color: #98fb98;
 }
