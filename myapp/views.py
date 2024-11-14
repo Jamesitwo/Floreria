@@ -8,14 +8,6 @@ from datetime import datetime
 from .carritoCompras import *
 # Create your views here.
 
-
-# def base(request):
-    
-#     return render(request,"base.html",{
-#         "categorias":categorias
-
-#     })
-
 categorias=Categoria.objects.all()
 def index(request):
     
@@ -52,7 +44,7 @@ def Arreglos(request,categoria):
 def crear_pedido(request):
     total=calcularTotales()
     if(len(arreglosComprar)==0):
-        return redirect("/arreglos/")
+        return redirect("/arreglos/todos")
         
     if(request.method=="POST"):
         print("crear pedido")
@@ -120,6 +112,7 @@ def arreglo_detalle(request,id):
 def carrito(request):
     total=calcularTotales()
     mensaje=""
+    mensaje2=""
     if(request.method=="POST"):
         opcion= request.POST.get("opcion")
         if(opcion=="proceder_pago"):
@@ -141,10 +134,13 @@ def carrito(request):
 
 
     cantidad_y_arreglo=list(zip(arreglosComprar,arreglosCantidades,totalValorArreglo))
+    if(len(arreglosComprar)==0):
+        mensaje2="Tu carrito de compras esta vacio"
     print(cantidad_y_arreglo)
     return render(request, "carrito.html",{
         "cantidad_y_arreglo":cantidad_y_arreglo,
         "total":total,
         "mensaje":mensaje,
         "categorias":categorias,
+        "mensaje2":mensaje2
     })

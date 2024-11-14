@@ -6,6 +6,11 @@
 <script src="{% static 'js/carrito.js' %}" defer> </script>
 
 <div class="mensaje" id="mensaje"><p>{{mensaje}}</p></div>
+
+<div class="mensaje_box" id="mensaje_box">
+  <img src="{% static 'img/floristeria.png' %}" alt="imagen carrito de compras" id="imagen_carrito">
+  <span id="mensaje2">{{mensaje2}}</span>
+</div>
 <div class="contenedor-principal">
     <div class="lista-productos">
       {% for arreglo,cantidad,total_arreglo in cantidad_y_arreglo %}
