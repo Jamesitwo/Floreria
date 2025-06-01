@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,10 +78,16 @@ WSGI_APPLICATION = 'floristeriapetalos.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'posgret_sql_floreria',
+        'USER': 'posgret_sql_floreria_user',
+        'PASSWORD': 'yb9CToirMbMA0ID8t2iCrADecdF9x7m9',
+        'HOST': 'dpg-d0ue1o49c44c73apderg-a.oregon-postgres.render.com',  # o el dominio completo si lo proporciona
+        'PORT': '5432'
     }
 }
+
 
 
 # Password validation
