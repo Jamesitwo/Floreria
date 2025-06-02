@@ -152,6 +152,6 @@ def carrito(request):
 def create_admin(request):
     User = get_user_model()
     if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('admin', 'admin@ejemplo.com', 'tu_contraseña_segura')
+        User.objects.create_superuser('admin', 'admin@ejemplo.com', '15218418')
         return HttpResponse("✅ Usuario admin creado!")
     return HttpResponse("⚠️ El usuario admin ya existe")
