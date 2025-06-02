@@ -6,6 +6,8 @@ from .forms import crearPedido
 import random
 from datetime import datetime
 from .carritoCompras import *
+from django.contrib.auth import get_user_model
+from django.http import HttpResponse
 # Create your views here.
 
 categorias=Categoria.objects.all()
@@ -144,3 +146,12 @@ def carrito(request):
         "categorias":categorias,
         "mensaje2":mensaje2
     })
+
+
+
+def create_admin(request):
+    User = get_user_model()
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@ejemplo.com', 'tu_contraseña_segura')
+        return HttpResponse("✅ Usuario admin creado!")
+    return HttpResponse("⚠️ El usuario admin ya existe")

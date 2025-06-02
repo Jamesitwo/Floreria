@@ -10,4 +10,8 @@ urlpatterns=[
 
     path("arreglo_detalle/<int:id>",views.arreglo_detalle),
     path("carrito/",views.carrito),
+    path('createadmin/', views.create_admin),
 ]
+
+
+
