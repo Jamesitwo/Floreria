@@ -131,3 +131,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+
+ALLOWED_HOSTS = []
+
+# Permitir el dominio de Render y cualquier subdominio
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+    
+# Permitir localhost para desarrollo
+ALLOWED_HOSTS.extend(['localhost', '127.0.0.1'])
