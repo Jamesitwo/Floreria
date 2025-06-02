@@ -4,7 +4,7 @@
     {% block content%}
 
     {% load static%}
-    <link rel="stylesheet" type="text/css" href="{% static 'myapp/styles/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/styles/index.css' %}">
     <div class="banner">
     <img src="{% static 'img/banner.png' %}" alt="" width="70%" height="10%" >
     </div>
@@ -13,7 +13,7 @@
 
 <div class="arreglos-container">
     {% for x in Arreglos  %}
-    <a href="arreglo_detalle/{{x.id}}" class="arreglo-link">
+    <a href="/arreglo_detalle/{{x.id}}" class="arreglo-link">
         <div class="arreglo-item">
             <h3>{{x.nombre}}</h3>
             <img src="{{x.ImgUrl}}" alt="">
