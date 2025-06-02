@@ -143,3 +143,11 @@ if RENDER_EXTERNAL_HOSTNAME:
     
 # Permitir localhost para desarrollo
 ALLOWED_HOSTS.extend(['localhost', '127.0.0.1'])
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# Para producción (DEBUG False)
+DEBUG = False
+ALLOWED_HOSTS = ['floreria-m396.onrender.com', 'localhost']
