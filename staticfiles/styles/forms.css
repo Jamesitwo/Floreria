@@ -1,0 +1,169 @@
+/* Contenedor principal del formulario */
+.formulario-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos de los pasos */
+.form-step {
+    display: none;
+}
+.form-step.active {
+    display: block;
+}
+
+/* Estilo de los labels */
+.formulario-container label {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+
+/* Estilos de los inputs y select */
+.formulario-container input[type="datetime-local"],
+.formulario-container select,
+.formulario-container input[type="text"],
+.formulario-container input[type="email"],
+.formulario-container input[type="number"],
+.formulario-container textarea {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border: 2px solid #ff6f91;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Botones de navegación */
+.form-navigation button {
+    padding: 10px 20px;
+    background-color: #ff6f91;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 48%;
+    box-sizing: border-box;
+}
+
+.form-navigation button:hover {
+    background-color: #ff8fa3;
+}
+/* Estilos para el contenedor del carrito */
+.cart-container {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Título del carrito */
+.cart-container h4 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Contenedor de los artículos */
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilo de cada artículo */
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen de cada artículo */
+.cart-item-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+/* Información del artículo */
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nombre del artículo */
+.cart-item-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Cantidad del artículo */
+.cart-item-quantity {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Total del carrito */
+.cart-total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+    text-align: right;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.formulario-container,
+.cart-container {
+    flex: 1;
+    min-width: 280px; /* Para que se acomoden en pantalla más pequeña */
+}
+
+
+
+button:disabled {
+    background-color:rgba(255, 111, 145, 0.5); /* Cambia el color a uno opaco */
+    cursor: not-allowed; /* Muestra el cursor de "no permitido" */
+    color: #ffffff; /* Color del texto */
+    border: none; /* Opcional: remueve el borde para un mejor aspecto */
+}
+/* Responsivo */
+@media (max-width: 768px) {
+    .formulario-container {
+        padding: 10px;
+    }
+
+    .form-navigation button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

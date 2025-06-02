@@ -1,0 +1,150 @@
+.contenedor-principal {
+  display: flex;  /* Usamos flexbox para crear las dos columnas */
+}
+
+/* Estilos para la lista de productos */
+.lista-productos {
+  width: 70%;     /* Ajusta el ancho de la columna de productos */
+}
+
+/* Estilos para cada producto individual */
+.producto {
+  display: flex;
+  align-items: center; /* Alinea verticalmente la imagen y los detalles */
+  margin-bottom: 20px; /* Espacio entre cada producto */
+}
+
+.producto img {
+  width: 100px;   /* Ajusta el tamaño de la imagen del producto */
+  margin-right: 20px; /* Espacio entre la imagen y los detalles */
+}
+
+.nombre-producto {
+  font-weight: bold; /* Nombre del producto en negrita */
+}
+
+/* Estilos para los controles de cantidad y el botón "Eliminar" */
+.cantidad-controles {
+  display: flex;
+  align-items: center; /* Alinea verticalmente los botones y el input */
+}
+
+.cantidad-controles button {
+  /* Estilos generales para los botones de cantidad */
+  background-color: #f0f0f0; 
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.cantidad-controles button:hover {
+  background-color: #ddd;
+}
+
+.cantidad-controles #eliminar {
+  /* Estilos específicos para el botón "Eliminar" */
+  background-color: #f44336; /* Color de fondo rojo */
+  color: white;            /* Color de texto blanco */
+}
+
+.cantidad-controles #eliminar:hover {
+  background-color: #d32f2f; /* Color de fondo rojo más oscuro al pasar el ratón */
+}
+
+/* Estilos para el resumen de la compra */
+.resumen-compra {
+  width: 30%;     /* Ajusta el ancho de la columna del resumen */
+  border: 1px solid #ccc; /* Borde simple alrededor del resumen */
+  padding: 20px;  /* Espacio interno en el resumen */
+}
+
+.resumen-compra h2 {
+  /* Estilos para el título del resumen (opcional) */
+}
+
+
+/* Estilo para el contenedor de alerta */
+.mensaje {
+position: fixed; /* Mantiene la alerta en una posición fija en la pantalla */
+top: 10px;
+right: 10px;
+padding: 15px 20px;
+background-color: #ff6f91; /* Color de fondo de tu paleta */
+color: #ffffff;
+font-size: 1rem;
+border-radius: 8px;
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+display: flex;
+align-items: center;
+z-index: 1000;
+opacity: 0;
+transform: translateY(-20px);
+transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Clase para mostrar la alerta */
+.mensaje.show {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* Estilo del texto en la alerta */
+.mensaje p {
+margin: 0;
+font-weight: bold;
+}
+
+/* Opcional: cerrar la alerta (botón o mensaje) */
+.mensaje .close-btn {
+background: none;
+border: none;
+color: #ffffff;
+font-size: 1.2rem;
+margin-left: auto;
+cursor: pointer;
+}
+
+.Btn_continuar_compra {
+display: block;
+margin-top: 20px;
+padding: 10px 20px;
+background-color: #ff6f91;
+color: white;
+border: none;
+border-radius: 10px;
+font-size: 18px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.Btn_continuar_compra:hover{
+background-color: #ff8fa3;
+}
+
+.mensaje_box {
+  display: flex;                      /* Usamos flexbox para centrar el contenido */
+  justify-content: center;            /* Centra el contenido horizontalmente */
+  align-items: center;                /* Centra el contenido verticalmente */
+  gap: 10px;                          /* Espacio entre los elementos (imagen y texto) */
+  margin-top: 20px;                   /* Espacio superior */
+  margin-bottom: 20px;                /* Espacio inferior para evitar que se solape con el resumen */
+  padding: 20px;                      /* Espaciado interno */
+  background-color: #f5f5f5;          /* Color de fondo suave */
+  border-radius: 10px;                /* Bordes redondeados */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Imagen del carrito */
+.mensaje_box img {
+  max-width: 150px;                   /* Ajusta el tamaño máximo de la imagen */
+  height: auto;                       /* Mantiene la proporción de la imagen */
+  object-fit: contain;                /* Asegura que la imagen se ajuste sin deformarse */
+}
+
+/* Estilo del texto dentro de mensaje2 */
+.mensaje_box span {
+  font-size: 1.2rem;                  /* Tamaño de fuente más grande */
+  font-weight: bold;                  /* Resalta el texto */
+  color: #333;                        /* Color oscuro para el texto */
+}
