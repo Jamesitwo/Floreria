@@ -83,14 +83,14 @@ def crear_pedido(request):
 def arreglo_detalle(request,nombre):
 
 #Toma el id del del arreglo en especifico para enviarlo al html
-    arreglo_detail=Arreglo.objects.get(id=id)
+    arreglo_detail=Arreglo.objects.get(nombre=nombre)
 #Vista de los arreglos de la parte inferior
     Arreglos=list(Arreglo.objects.filter(stock__gt=0))
-    arreglos_random= random.sample(Arreglos, 5)
+    #arreglos_random= random.sample(Arreglos, 5)
     mensaje=""
 
     if request.method=="POST":
-        arreglo=Arreglo.objects.get(id=id)
+        arreglo=Arreglo.objects.get(nombre=nombre)
         agregar_comprar=request.POST.get("agregar_comprar")
         if(agregar_comprar=="Btn_comprar_ahora"):
             print("Btn_comprar_ahora")
@@ -104,7 +104,7 @@ def arreglo_detalle(request,nombre):
 
     return render(request,"arreglo_detalle.html", {
         "arreglo":arreglo_detail,
-        "Arreglos":arreglos_random,
+        "Arreglos":Arreglos,
         "mensaje":mensaje,
         "categorias":categorias,
     })
