@@ -80,7 +80,7 @@ def crear_pedido(request):
 
     })
 #-----------------------------------------------------------------------
-def arreglo_detalle(request,id):
+def arreglo_detalle(request,nombre):
 
 #Toma el id del del arreglo en especifico para enviarlo al html
     arreglo_detail=Arreglo.objects.get(id=id)

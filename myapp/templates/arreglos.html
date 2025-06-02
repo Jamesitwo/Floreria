@@ -9,7 +9,7 @@
     <h1 style="text-align: center;">Nuestra cuidadosa seleccion para tus obsequios</h1>
     <div class="arreglos-container">
         {% for x in Arreglos  %}
-        <a href="/arreglo_detalle/{{x.id}}" class="arreglo-link">
+        <a href="/arreglo_detalle/{{x.nombre}}" class="arreglo-link">
             <div class="arreglo-item">
                 <h3>{{x.nombre}}</h3>
                 <img src="{{x.ImgUrl}}" alt="">

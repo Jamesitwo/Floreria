@@ -8,9 +8,9 @@ urlpatterns=[
 
     path("crear_pedidos/",views.crear_pedido),
 
-    path("arreglo_detalle/<int:id>",views.arreglo_detalle),
+    path("arreglo_detalle/<str:nombre>",views.arreglo_detalle),
     path("carrito/",views.carrito),
-    path('createadmin/', views.create_admin),
+   
 ]
 
 
