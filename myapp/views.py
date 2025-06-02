@@ -13,9 +13,9 @@ def index(request):
     
     #base(request)
     Arreglos=list(Arreglo.objects.filter(stock__gt=0))
-    arreglos_random= random.sample(Arreglos, 5)
+    #arreglos_random= random.sample(Arreglos, 5)
     return render(request,"index.html",{
-        "Arreglos":arreglos_random,
+        "Arreglos":Arreglos,
         "categorias":categorias,
     })
     
